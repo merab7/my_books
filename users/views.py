@@ -6,7 +6,11 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-from .serializers import UserSerializer
+from .serializers import UserSerializer, ProfileSerializer
+from .models import Profile
+
+
+
 
 
 @api_view(['POST'])
@@ -20,13 +24,23 @@ def sign_up(request):
             password=request.data['password'],
             email=request.data.get('email', '')
         )
-        token = Token.objects.create(user=user)
         
+        #create Profile for that user:
+
+        profile = Profile.objects.create(user=user)
+        profile.save()
+
+        token = Token.objects.create(user=user)
+                 
         # Serialize the created user and return token
         serialized_user = UserSerializer(user)
+
         return Response({"token": token.key, "user": serialized_user.data}, status=status.HTTP_201_CREATED)
     
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
 
 
 @api_view(['POST'])
@@ -42,12 +56,17 @@ def log_in(request):
     return Response({"token": token.key, "user": serializer.data}, status=status.HTTP_200_OK)
 
 
+
+
+
 @api_view(['GET'])
 @authentication_classes([SessionAuthentication, TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def test_token(request):
     # Return a structured JSON response
     return Response({"message": f"Token valid for user {request.user.email}"})
+
+
 
 
 @api_view(['POST'])
