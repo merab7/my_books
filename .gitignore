@@ -1,0 +1,95 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django specific
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+.env
+.env.*
+
+# If using a virtualenv or pyenv
+venv/
+env/
+ENV/
+venv.bak/
+.venv/
+
+# Ignore all local env and virtualenv config files
+local_settings.py
+.env
+.env.local
+.env.production
+.env.test
+
+# Django Migrations
+**/migrations/*
+!**/migrations/__init__.py  # Only ignore migration files, keep __init__.py
+
+# Media uploads (e.g. book cover images uploaded by users)
+media/
+
+# Static files (can be re-generated)
+staticfiles/
+static/
+
+# Jupyter Notebook files (if any)
+.ipynb_checkpoints
+
+# Celery beat schedule file (for task scheduling)
+celerybeat-schedule
+
+# VSCode
+.vscode/
+
+# macOS specific files
+.DS_Store
+
+# PyCharm
+.idea/
+
+# JetBrains related
+*.iml
+.idea/
+.idea_modules/
+__pycache__/
+
+# Postgres database dump
+*.sql
+
+# If using Docker
+docker-compose.yml
+docker-compose.override.yml
+docker/
+
+# Node.js (if you’re using npm/yarn for the frontend assets)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# mypy
+.mypy_cache/
+
+# Pytest
+.pytest_cache/
+
+# Caches
+*.swp
+*~
+.cache
