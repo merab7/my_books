@@ -17,7 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
 class BookSerializer(serializers.ModelSerializer):
     class Meta:  
         model = Book
-        fields= ['title', 'author', 'description', ' published_date', 'ganeres', 'cover_image', 'avarage_rating']
+        fields= ['title', 'author', 'description', 'published_date', 'genres', 'cover_image', 'average_rating']
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -33,11 +33,10 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-     
-    user = UserSerializer()
-    bookshelf = BookSerializer(many=True)
-    review_history = ReviewSerializer()
+    user = UserSerializer(read_only=True)
+    bookshelf = BookSerializer(many=True, read_only=True)
+    review_history = ReviewSerializer(many=True, read_only=True)
 
-    class Meta(object):
+    class Meta:
         model = Profile
-        fields = ['user', 'favorite_ganres', 'bookshelf', 'review_history']
+        fields = ['user', 'favorite_genres', 'bookshelf', 'review_history']

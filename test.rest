@@ -1,7 +1,7 @@
 POST  http://127.0.0.1:8000/login
 Content-Type: application/json
 
-{"username": "9erab2", "password": "123"}
+{"username": "merab", "password": "123"}
 
 ###
 POST  http://127.0.0.1:8000/signup
@@ -15,7 +15,7 @@ Content-Type: application/json
 Authorization: Token 407bb3d5a55fbf2a850b97bca3510a8257e52476
 
 ###
-POST  http://127.0.0.1:8000/logout
+POST http://127.0.0.1:8000/logout
 Content-Type: application/json
-Authorization: Token 407bb3d5a55fbf2a850b97bca3510a8257e52476
+Authorization: Token 976c9273c47f24932236560f1afa07fcf41421bc
 
