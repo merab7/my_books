@@ -10,7 +10,7 @@ class Book(models.Model):
     title = models.CharField(max_length=1000, blank=True, null=True)
     author = models.CharField(max_length=1000, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    published_date = models.DateField(blank=True, null=True)  # Changed to DateField for better date handling
+    published_date = models.CharField(max_length=100, blank=True, null=True)  # Changed to DateField for better date handling
     genres = models.CharField(max_length=500, blank=True, null=True)  # Fixed spelling from 'ganeres' to 'genres'
     cover_image = models.URLField(blank=True, null=True)
     average_rating = models.FloatField(blank=True, null=True)  # Changed to FloatField for ratings
